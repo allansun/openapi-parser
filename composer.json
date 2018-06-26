@@ -1,0 +1,26 @@
+{
+  "name": "allansun/openapi-parser",
+  "description": "A universal OpenAPI (Swagger) schema parser",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Allan Sun",
+      "email": "allan.sun@bricre.com"
+    }
+  ],
+  "require-dev": {
+    "zendframework/zend-code": "3.3.*",
+    "symfony/console": "4.1.*",
+    "symfony/yaml": "4.1.*",
+    "symfony/property-info": "4.1.*",
+    "phpunit/phpunit": "^7"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OpenAPI\\": "src",
+      "Tests\\OpenAPI\\": "tests"
+    }
+  },
+  "bin": []
+}
