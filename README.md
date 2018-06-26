@@ -5,7 +5,7 @@ A universal OpenAPI (Swagger) schema parser to convert OpenAPI/Swagger files int
 ### Installing
 
 ```
-composer require allansun/openapi-parser
+composer require-dev allansun/openapi-parser
 ```
 
 
@@ -17,7 +17,7 @@ To start
 ```php
 <?php
 
-    $fileContent = file_get_contents(dirname($OPENAPI_FILE_LOCATION);
+    $fileContent = file_get_contents(dirname($OPENAPI_FILE_LOCATION));
     $Parser = new SwaggerParser();
     
     $Swagger = $Parser->parse($json);

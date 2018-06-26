@@ -16,9 +16,13 @@
     "symfony/property-info": "4.1.*",
     "phpunit/phpunit": "^7"
   },
+  "autoload": {
+    "psr-4": {
+      "OpenAPI\\": "src"
+    }
+  },
   "autoload-dev": {
     "psr-4": {
-      "OpenAPI\\": "src",
       "Tests\\OpenAPI\\": "tests"
     }
   },
