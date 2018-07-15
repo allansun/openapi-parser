@@ -42,6 +42,12 @@ abstract class AbstractObject implements ObjectInterface
         }
     }
 
+    public function getPatternedFields()
+    {
+        return $this->patternedFields;
+    }
+
+
     public function isDataValid()
     {
         if (1 <= count($this->patternedFields)) {

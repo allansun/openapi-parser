@@ -61,7 +61,7 @@ class SwaggerParser
     protected function parseObject(ObjectInterface $object, array $data)
     {
         foreach ($data as $index => $value) {
-            if ('$ref' == $index) {
+            if (false !== strpos($index, '$')) {
                 $index = str_replace('$', '_', $index);
             }
 
