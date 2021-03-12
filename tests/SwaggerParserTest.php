@@ -5,48 +5,44 @@ namespace Tests\OpenAPI;
 use OpenAPI\Schema\V2 as Schema;
 use OpenAPI\SwaggerParser;
 use PHPUnit\Framework\TestCase;
-use Tests\OpenAPI\Fixture\Fixture;
 
 class SwaggerParserTest extends TestCase
 {
 
     public function testBasic()
     {
-        $json = Fixture::getBasic();
 
         $Parser = new SwaggerParser();
 
-        $Swagger = $Parser->parse($json);
+        $result = $Parser->parse(json_decode(file_get_contents(__DIR__ . '/Fixture/swagger.json'), true));
 
-//        ini_set('xdebug.var_display_max_depth', 10);
-//        var_dump($Swagger);
-        $this->assertInstanceOf(Schema\Swagger::class, $Swagger);
+        $this->assertInstanceOf(Schema\Swagger::class, $result);
 
-//        $InfoObject = $Swagger->info;
-//
-//        $this->assertInstanceOf(Schema\InfoObject::class, $InfoObject);
-//
-//        $PathsObject = $Swagger->paths;
-//
-//        $this->assertInstanceOf(Schema\PathsObject::class, $PathsObject);
-//
-//        /** @var Schema\PathItemObject $PetsPath */
-//        $PetsPath = $PathsObject->getPatternedField('/pets');
-//
-//        $this->assertInstanceOf(Schema\PathItemObject::class,$PetsPath);
-//
-//        $GetOperation = $PetsPath->get;
-//
-//        $this->assertInstanceOf(Schema\OperationObject::class,$GetOperation);
-//
-//        $responses = $GetOperation->responses;
-//
-//        $this->assertInstanceOf(Schema\ResponsesObject::class,$responses);
-//
-//        /** @var Schema\ResponseObject $response200 */
-//        $response200 = $responses->getPatternedField('200');
-//
-//        $this->assertInstanceOf(Schema\ResponseObject::class,$response200);
+        $Info = $result->info;
+
+        $this->assertInstanceOf(Schema\Info::class, $Info);
+
+        $Paths = $result->paths;
+
+        $this->assertInstanceOf(Schema\Paths::class, $Paths);
+
+        /** @var Schema\PathItem $PetsPath */
+        $PetsPath = $Paths->getPatternedField('/pet');
+
+        $this->assertInstanceOf(Schema\PathItem::class, $PetsPath);
+
+        $GetOperation = $PetsPath->put;
+
+        $this->assertInstanceOf(Schema\Operation::class, $GetOperation);
+
+        $responses = $GetOperation->responses;
+
+        $this->assertInstanceOf(Schema\Responses::class, $responses);
+
+        /** @var Schema\Response $response200 */
+        $response400 = $responses->getPatternedField('400');
+
+        $this->assertInstanceOf(Schema\Response::class, $response400);
 
 
     }
