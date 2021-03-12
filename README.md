@@ -1,6 +1,7 @@
 # PHP OpenAPI (Swagger) parser 
 
-A universal OpenAPI (Swagger) schema parser to convert OpenAPI/Swagger files into PHP object for programming use.
+A universal OpenAPI (V3) or Swagger (V2) schema parser to convert OpenAPI/Swagger files into PHP object for 
+programming use.
 
 ### Installing
 
@@ -14,14 +15,32 @@ composer require-dev allansun/openapi-parser
 This project is used for 'dev' environment only. It does not generate/provide any codes for run-time environment.
 
 To start
+
 ```php
 <?php
 
-    $fileContent = file_get_contents(dirname($OPENAPI_FILE_LOCATION));
+    use OpenAPI\OpenAPIParser;
+    
+    $Parser = new OpenAPIParser();
+    
+    $Swagger = $Parser->parse(json_decode(file_get_contents('openapi.json'), true));
+```
+
+Or to parse the legacy Swagger version 
+
+```php
+<?php
+
+    use OpenAPI\SwaggerParser;
+    
     $Parser = new SwaggerParser();
     
-    $Swagger = $Parser->parse($json);
+    $Swagger = $Parser->parse(json_decode(file_get_contents('swagger.json'), true));
 ```
+
+The result would be:
+
+![OpenAPI](./docs/openapi-parser.png)
 
 
 ## Contributing
