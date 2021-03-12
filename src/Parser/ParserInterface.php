@@ -7,9 +7,9 @@ namespace OpenAPI\Parser;
 interface ParserInterface
 {
     /**
-     * @param string $info
+     * @param  string  $info
      *
      * @return array
      */
-    public static function parse(string $info);
+    public static function parse(string $info): array;
 }

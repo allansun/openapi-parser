@@ -10,24 +10,24 @@ class XMLObject extends AbstractObject
 {
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $name;
+    public ?string $name = null;
     /**
-     * @var string
+     * @var string|null
      */
-    public $namespace;
+    public ?string $namespace = null;
     /**
-     * @var string
+     * @var string|null
      */
-    public $prefix;
-    /**
-     * @var boolean
-     */
-    public $attribute;
+    public ?string $prefix = null;
     /**
      * @var boolean
      */
-    public $wrapped;
+    public ?bool $attribute = false;
+    /**
+     * @var boolean
+     */
+    public ?bool $wrapped = false;
 
 }

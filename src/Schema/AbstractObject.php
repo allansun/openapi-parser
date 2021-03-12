@@ -3,6 +3,9 @@
 namespace OpenAPI\Schema;
 
 
+use ReflectionObject;
+use ReflectionProperty;
+
 abstract class AbstractObject implements ObjectInterface
 {
     /**
@@ -11,29 +14,11 @@ abstract class AbstractObject implements ObjectInterface
      *
      * @var array
      */
-    protected $fieldPatterns = ['/^x-.*/' => true];
+    protected array $fieldPatterns = ['/^x-.*/' => true];
 
-    protected $patternedFields = [];
+    protected array $patternedFields = [];
 
-    public function isFieldPatternedField($field)
-    {
-        foreach ($this->fieldPatterns as $index => $fieldTypeClassName) {
-            if (preg_match($index, $field)) {
-                return $fieldTypeClassName;
-            }
-        }
-
-        return false;
-    }
-
-    public function setPatternedField($field, $value)
-    {
-        $this->patternedFields[$field] = $value;
-
-        return $this;
-    }
-
-    public function getPatternedField($field)
+    public function getPatternedField(string $field)
     {
         if (array_key_exists($field, $this->patternedFields)) {
             return $this->patternedFields[$field];
@@ -42,21 +27,31 @@ abstract class AbstractObject implements ObjectInterface
         }
     }
 
-    public function getPatternedFields()
+    public function getPatternedFieldType(string $field)
+    {
+        foreach ($this->fieldPatterns as $index => $fieldTypeClassName) {
+            if (preg_match($index, $field)) {
+                return $fieldTypeClassName;
+            }
+        }
+
+        return null;
+    }
+
+    public function getPatternedFields(): array
     {
         return $this->patternedFields;
     }
 
-
-    public function isDataValid()
+    public function isDataValid(): bool
     {
         if (1 <= count($this->patternedFields)) {
             return true;
         }
 
-        $ReflectionObject = new \ReflectionObject($this);
+        $ReflectionObject = new ReflectionObject($this);
 
-        foreach ($ReflectionObject->getProperties(\ReflectionProperty::IS_PUBLIC) as $Property) {
+        foreach ($ReflectionObject->getProperties(ReflectionProperty::IS_PUBLIC) as $Property) {
             $propertyName = $Property->getName();
 
             if (!empty($this->$propertyName)) {
@@ -65,6 +60,13 @@ abstract class AbstractObject implements ObjectInterface
         }
 
         return false;
+    }
+
+    public function setPatternedField(string $field, $value): self
+    {
+        $this->patternedFields[$field] = $value;
+
+        return $this;
     }
 
 

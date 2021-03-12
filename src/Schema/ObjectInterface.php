@@ -7,32 +7,28 @@ namespace OpenAPI\Schema;
 interface ObjectInterface
 {
     /**
-     * Check if a field is patterned field
-     *
-     * @param string $field
-     *
-     * @return bool
-     */
-    public function isFieldPatternedField($field);
-
-    /**
-     * Set a patterened field's value
-     *
-     * @param string $field
-     * @param mixed  $value
-     *
-     * @return self
-     */
-    public function setPatternedField($field, $value);
-
-    /**
      * Get value from a patterened field
      *
-     * @param string $field
+     * @param  string  $field
      *
      * @return mixed
      */
-    public function getPatternedField($field);
+    public function getPatternedField(string $field);
+
+    /**
+     * Get the defined type of patterned field
+     * @param  string  $field
+     *
+     * @return string|array
+     */
+    public function getPatternedFieldType(string $field);
+
+    /**
+     * Get all patterned fields
+     *
+     * @return ObjectInterface[]
+     */
+    public function getPatternedFields(): array;
 
     /**
      * Validates any fields within this object contains any data. If not it means we might have parsed wrong JSON data
@@ -41,6 +37,16 @@ interface ObjectInterface
      *
      * @return boolean
      */
-    public function isDataValid();
+    public function isDataValid(): bool;
+
+    /**
+     * Set a patterened field's value
+     *
+     * @param  string  $field
+     * @param  mixed   $value
+     *
+     * @return self
+     */
+    public function setPatternedField(string $field, $value): ObjectInterface;
 
 }

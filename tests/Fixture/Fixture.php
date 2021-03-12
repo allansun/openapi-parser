@@ -7,7 +7,7 @@ namespace Tests\OpenAPI\Fixture;
 class Fixture
 {
 
-    private static $basic = 'kubernetes-openapi.json';
+    private static string $basic = 'kubernetes-openapi.json';
 
     /**
      * Read the file content in current folder and returns its content

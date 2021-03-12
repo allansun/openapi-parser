@@ -20,7 +20,7 @@ class SwaggerParserTest extends TestCase
 
 //        ini_set('xdebug.var_display_max_depth', 10);
 //        var_dump($Swagger);
-        $this->assertInstanceOf(Schema\SwaggerObject::class, $Swagger);
+        $this->assertInstanceOf(Schema\Swagger::class, $Swagger);
 
 //        $InfoObject = $Swagger->info;
 //

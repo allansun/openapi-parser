@@ -4,6 +4,7 @@
 namespace OpenAPI\Schema\V2;
 
 
+use Exception;
 use OpenAPI\Schema\DataTypesInterface;
 
 final class DataTypes implements DataTypesInterface
@@ -45,10 +46,10 @@ final class DataTypes implements DataTypesInterface
 
     ];
 
-    static public function getPHPDataType(string $dataType)
+    static public function getPHPDataType(string $dataType): string
     {
         if (!array_key_exists($dataType, self::DATATYPES)) {
-            throw new \Exception(sprintf("Unrecongnized data type '%s'", $dataType));
+            throw new Exception(sprintf("Unrecongnized data type '%s'", $dataType));
         }
 
         // On 32bit systems, store int64 as string
