@@ -11,7 +11,8 @@
   ],
   "require": {
     "php": "^7.4",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-fileinfo": "*"
   },
   "require-dev": {
     "symfony/yaml": "^v5.2.4",

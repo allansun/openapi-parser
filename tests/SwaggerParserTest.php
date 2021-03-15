@@ -2,8 +2,8 @@
 
 namespace Tests\OpenAPI;
 
+use OpenAPI\Parser\SwaggerParser;
 use OpenAPI\Schema\V2 as Schema;
-use OpenAPI\SwaggerParser;
 use PHPUnit\Framework\TestCase;
 
 class SwaggerParserTest extends TestCase
@@ -14,7 +14,7 @@ class SwaggerParserTest extends TestCase
 
         $Parser = new SwaggerParser();
 
-        $result = $Parser->parse(json_decode(file_get_contents(__DIR__ . '/Fixture/swagger.json'), true));
+        $result = $Parser->parse(json_decode(file_get_contents(__DIR__ . '/Fixture/petstore-swagger.json'), true));
 
         $this->assertInstanceOf(Schema\Swagger::class, $result);
 

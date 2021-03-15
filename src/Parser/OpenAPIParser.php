@@ -1,7 +1,7 @@
 <?php
 
 
-namespace OpenAPI;
+namespace OpenAPI\Parser;
 
 
 use OpenAPI\Schema\V3\OpenAPI;

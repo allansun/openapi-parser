@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAPI;
+namespace OpenAPI\Parser;
 
 use OpenAPI\Schema\ObjectInterface;
 use OpenAPI\Schema\V2\Swagger;
@@ -10,7 +10,7 @@ use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\PropertyInfo\Type;
 
-abstract class AbstractParser
+abstract class AbstractParser implements ParserInterface
 {
     protected array $reflectionCache = [];
 

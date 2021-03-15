@@ -4,12 +4,14 @@
 namespace OpenAPI\Parser;
 
 
+use OpenAPI\Schema\ObjectInterface;
+
 interface ParserInterface
 {
     /**
-     * @param  string  $info
+     * @param  array  $data
      *
-     * @return array
+     * @return ObjectInterface
      */
-    public static function parse(string $info): array;
+    public function parse(array $data): ObjectInterface;
 }

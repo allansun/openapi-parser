@@ -2,7 +2,7 @@
 
 namespace Tests\OpenAPI;
 
-use OpenAPI\OpenAPIParser;
+use OpenAPI\Parser\OpenAPIParser;
 use OpenAPI\Schema\V3 as Schema;
 use PHPUnit\Framework\TestCase;
 
@@ -11,7 +11,7 @@ class OpenAPIParserTest extends TestCase
 
     public function testParse()
     {
-        $data = json_decode(file_get_contents(__DIR__ . '/Fixture/openapi.json'), true);
+        $data = json_decode(file_get_contents(__DIR__ . '/Fixture/petstore-openapi.json'), true);
 
         $parser = new OpenAPIParser();
 

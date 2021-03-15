@@ -19,19 +19,32 @@ To start
 ```php
 <?php
 
-    use OpenAPI\OpenAPIParser;
+    use OpenAPI\Parser;
     
-    $Parser = new OpenAPIParser();
-    
-    $Swagger = $Parser->parse(json_decode(file_get_contents('openapi.json'), true));
+    $OpenAPI = Parser::parse('openapi.json');
 ```
 
-Or to parse the legacy Swagger version 
+The parser class will automatically detect input file type (JSON or YAML) and use correct parser (Swagger or OpenAPI)
+to parse the input.
+
+Alternatively, you can call the correct parser directly.
 
 ```php
 <?php
 
-    use OpenAPI\SwaggerParser;
+    use OpenAPI\Parser\OpenAPIParser;
+    
+    $Parser = new OpenAPIParser();
+    
+    $OpenAPI = $Parser->parse(json_decode(file_get_contents('openapi.json'), true));
+```
+
+Or to parse the legacy Swagger version
+
+```php
+<?php
+
+    use OpenAPI\Parser\SwaggerParser;
     
     $Parser = new SwaggerParser();
     
