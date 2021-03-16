@@ -28,7 +28,7 @@ abstract class AbstractObject implements ObjectInterface
             $propertyName = $Property->getName();
 
             if (!empty($this->$propertyName)) {
-                $fields[$propertyName] = $Property;
+                $fields[$propertyName] = $Property->getValue();
             }
         }
 
