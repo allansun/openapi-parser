@@ -18,6 +18,27 @@ abstract class AbstractObject implements ObjectInterface
 
     protected array $patternedFields = [];
 
+    public function getAllValidFields(): array
+    {
+        $fields = [];
+
+        $ReflectionObject = new ReflectionObject($this);
+
+        foreach ($ReflectionObject->getProperties(ReflectionProperty::IS_PUBLIC) as $Property) {
+            $propertyName = $Property->getName();
+
+            if (!empty($this->$propertyName)) {
+                $fields[$propertyName] = $Property;
+            }
+        }
+
+        foreach ($this->getPatternedFields() as $key => $value) {
+            $fields[$key] = $value;
+        }
+
+        return $fields;
+    }
+
     public function getPatternedField(string $field)
     {
         if (array_key_exists($field, $this->patternedFields)) {
@@ -68,6 +89,4 @@ abstract class AbstractObject implements ObjectInterface
 
         return $this;
     }
-
-
 }
