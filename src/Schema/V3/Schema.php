@@ -181,6 +181,6 @@ class Schema extends AbstractObject
     public ?bool $deprecated = false;
 
     protected array $fieldPatterns = [
-        '/^*/' => true
+        '/.*/' => true
     ];
 }
