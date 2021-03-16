@@ -1,11 +1,10 @@
 <?php
 
 
-namespace OpenAPI\Schema\V2;
+namespace OpenAPI\Schema;
 
 
 use Exception;
-use OpenAPI\Schema\DataTypesInterface;
 
 final class DataTypes implements DataTypesInterface
 {
