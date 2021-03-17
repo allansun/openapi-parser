@@ -37,9 +37,9 @@ class Link extends AbstractObject
     /**
      * A literal value or {expression} to use as a request body when calling the target operation.
      *
-     * @var string|null
+     * @var mixed
      */
-    public ?string $requestBody = null;
+    public $requestBody = null;
 
     /**
      * A description of the link. CommonMark syntax MAY be used for rich text representation.
