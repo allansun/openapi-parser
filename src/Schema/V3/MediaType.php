@@ -42,6 +42,6 @@ class MediaType extends AbstractObject
     public ?array $encoding = [];
 
     protected array $fieldPatterns = [
-        '/^x-.*/' => true
+        '/.*/' => true
     ];
 }
