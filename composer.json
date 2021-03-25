@@ -12,11 +12,12 @@
   "require": {
     "php": "^7.4",
     "ext-json": "*",
-    "ext-fileinfo": "*"
+    "ext-fileinfo": "*",
+
+    "symfony/yaml": "^v5.2.4",
+    "symfony/property-info": "^v5.1.5"
   },
   "require-dev": {
-    "symfony/yaml": "^v5.2.4",
-    "symfony/property-info": "^v5.1.5",
     "phpunit/phpunit": "^9"
   },
   "autoload": {

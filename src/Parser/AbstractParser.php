@@ -66,6 +66,7 @@ abstract class AbstractParser implements ParserInterface
     {
         $propertyTypes = $this->getPropertyTypes($object, $index);
 
+        $collection = null;
         if ($propertyTypes) {
             foreach ($propertyTypes as $PropertyType) {
                 if ($PropertyType->isCollection()) {
@@ -81,8 +82,8 @@ abstract class AbstractParser implements ParserInterface
                     }
 
                     if (1 <= count($values)) {
-                        $value = $values;
-                        break;
+                        $collection = array_merge($collection ?? [], $values);
+                        continue;
                     }
                 } elseif ($PropertyType->getClassName()) {
                     $className  = $PropertyType->getClassName();
@@ -97,7 +98,7 @@ abstract class AbstractParser implements ParserInterface
 
         }
 
-        $object->$index = $value;
+        $object->$index = $collection ?? $value;
 
         return $object;
     }
