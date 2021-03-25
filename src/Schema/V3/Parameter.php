@@ -39,7 +39,7 @@ class Parameter extends AbstractObject
      *
      * @var string|null
      */
-    public ?string $description;
+    public ?string $description = null;
 
     /**
      * Determines whether this parameter is mandatory. If the parameter location is "path", this property is REQUIRED
