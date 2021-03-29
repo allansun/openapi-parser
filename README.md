@@ -1,5 +1,10 @@
 # PHP OpenAPI (Swagger) parser 
 
+[![Latest Stable Version](https://poser.pugx.org/allansun/openapi-parser/v)](//packagist.org/packages/allansun/openapi-parser) 
+[![Total Downloads](https://poser.pugx.org/allansun/openapi-parser/downloads)](//packagist.org/packages/allansun/openapi-parser) 
+[![License](https://poser.pugx.org/allansun/openapi-parser/license)](//packagist.org/packages/allansun/openapi-parser)
+[![codecov](https://codecov.io/gh/allansun/openapi-parser/branch/master/graph/badge.svg?token=OVYRXPSW2Y)](https://codecov.io/gh/allansun/openapi-parser)
+
 A universal OpenAPI (V3) or Swagger (V2) schema parser to convert OpenAPI/Swagger files into PHP object for 
 programming use.
 
