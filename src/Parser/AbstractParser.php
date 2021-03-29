@@ -62,14 +62,21 @@ abstract class AbstractParser implements ParserInterface
         return $object;
     }
 
-    protected function parseProperty(ObjectInterface $object, $index, $value): ObjectInterface
+    /**
+     * @param  ObjectInterface  $object
+     * @param                   $index
+     * @param                   $value
+     *
+     * @return ObjectInterface|ObjectInterface[]
+     */
+    protected function parseProperty(ObjectInterface $object, $index, $value)
     {
         $propertyTypes = $this->getPropertyTypes($object, $index);
 
         if ($propertyTypes) {
+            $values = [];
             foreach ($propertyTypes as $PropertyType) {
                 if ($PropertyType->isCollection()) {
-                    $values = [];
                     if (true == ($PropertyType->getCollectionValueType() &&
                                  $className = $PropertyType->getCollectionValueType()->getClassName())) {
                         foreach ($value as $key => $valueItem) {
@@ -79,16 +86,11 @@ abstract class AbstractParser implements ParserInterface
                             }
                         }
                     }
-
-                    if (1 <= count($values)) {
-                        $value = $values;
-                        break;
-                    }
                 } elseif ($PropertyType->getClassName()) {
                     $className  = $PropertyType->getClassName();
                     $objctValue = $this->parseObject(new $className(), $value);
                     if ($objctValue->isDataValid()) {
-                        $value = $objctValue;
+                        $values = $objctValue;
                         break;
                     }
                 }
@@ -97,7 +99,7 @@ abstract class AbstractParser implements ParserInterface
 
         }
 
-        $object->$index = $value;
+        $object->$index = !empty($values) ? $values : $value;
 
         return $object;
     }

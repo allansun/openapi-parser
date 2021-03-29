@@ -5,6 +5,7 @@ namespace Tests\OpenAPI;
 use OpenAPI\Parser\SwaggerParser;
 use OpenAPI\Schema\V2 as Schema;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Yaml\Yaml;
 
 class SwaggerParserTest extends TestCase
 {
@@ -44,6 +45,16 @@ class SwaggerParserTest extends TestCase
 
         $this->assertInstanceOf(Schema\Response::class, $response400);
 
+    }
 
+    /**
+     * @link https://github.com/allansun/openapi-parser/pull/1
+     */
+    public function testGithub(){
+        $Parser = new SwaggerParser();
+
+        $result = $Parser->parse(Yaml::parseFile(__DIR__.'/Fixture/github.yaml'));
+
+        $this->assertInstanceOf(Schema\Swagger::class, $result);
     }
 }

@@ -1,0 +1,55 @@
+swagger: '2.0'
+info:
+    title: Test
+    description: Test processing service
+    version: 65.5.35
+    license:
+        name: proprietary
+    contact:
+        url: 'https://example.com/readme'
+host: localhost
+schemes:
+    - http
+consumes:
+    - application/json
+produces:
+    - application/json
+paths:
+    /tests:
+        post:
+            tags:
+                - Tag1
+            summary: Create test.
+            operationId: CreateTest
+            description: 'Create test data by test id, test hash or test uuid.'
+            parameters:
+                - $ref: '#/parameters/RandomParameter' # ← this
+                - name: body # ← and this
+                  in: body
+                  required: true
+                  schema:
+                      $ref: '#/definitions/Error'
+            responses:
+                '400':
+                    description: Bad request.
+                    schema:
+                        $ref: '#/definitions/Error'
+                '500':
+                    description: Internal server error.
+                    schema:
+                        $ref: '#/definitions/Error'
+parameters:
+    RandomParameter:
+        in: header
+        type: string
+        name: X-Random-Param
+        required: false
+definitions:
+    Error:
+        type: object
+        required:
+            - message
+        description: Error message
+        properties:
+            message:
+                type: string
