@@ -28,9 +28,5 @@
     "psr-4": {
       "Tests\\OpenAPI\\": "tests"
     }
-  },
-  "bin": [],
-  "scripts": {
-    "test": "vendor/bin/phpunit"
   }
 }

@@ -51,10 +51,10 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: composer install --no-progress --no-suggest
 
     - name: "Run tests with phpunit/phpunit"
-      run: "vendor/bin/phpunit --configuration=phpunit.xml.dist --coverage-clover=coverage.xml"
+      run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
 
     - name: "Send code coverage report to Codecov.io"
       env:
