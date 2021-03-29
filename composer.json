@@ -29,5 +29,8 @@
       "Tests\\OpenAPI\\": "tests"
     }
   },
-  "bin": []
+  "bin": [],
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  }
 }

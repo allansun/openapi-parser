@@ -64,11 +64,11 @@ conduct, and the process for submitting pull requests to us.
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the 
-[tags on this repository](/tags). 
+[tags on this repository](https://github.com/allansun/openapi-parser/tags). 
 
 ## Authors
 
-* **Allan Sun** - *Initial work* - [AllanSun](https://github.com/allansun)
+* **Allan Sun** - *Initial work* - [Allan Sun](https://github.com/allansun)
 
 See also the list of [contributors](https://github.com/allansun/openapi-parser/contributors) who participated in this 
 project.
