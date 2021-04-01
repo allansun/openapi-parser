@@ -71,6 +71,11 @@ abstract class AbstractParser implements ParserInterface
      */
     protected function parseProperty(ObjectInterface $object, $index, $value)
     {
+        if(empty($values)){
+            return $object;
+        }
+
+
         $propertyTypes = $this->getPropertyTypes($object, $index);
 
         if ($propertyTypes) {
