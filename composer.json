@@ -2,7 +2,7 @@
   "name": "allansun/openapi-parser",
   "description": "A universal OpenAPI (Swagger) schema parser",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "Allan Sun",
