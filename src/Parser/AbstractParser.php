@@ -82,8 +82,8 @@ abstract class AbstractParser implements ParserInterface
             $values = [];
             foreach ($propertyTypes as $PropertyType) {
                 if ($PropertyType->isCollection()) {
-                    if (true == ($PropertyType->getCollectionValueType() &&
-                                 $className = $PropertyType->getCollectionValueType()->getClassName())) {
+                    if (true == ($PropertyType->getCollectionValueTypes() &&
+                                 $className = $PropertyType->getCollectionValueTypes()[0]->getClassName())) {
                         foreach ($value as $key => $valueItem) {
                             $objctValue = $this->parseObject(new $className(), $valueItem);
                             if ($objctValue->isDataValid()) {
