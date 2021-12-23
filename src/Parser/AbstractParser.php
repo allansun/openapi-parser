@@ -67,9 +67,9 @@ abstract class AbstractParser implements ParserInterface
      * @param                   $index
      * @param                   $value
      *
-     * @return ObjectInterface|ObjectInterface[]
+     * @return ObjectInterface
      */
-    protected function parseProperty(ObjectInterface $object, $index, $value)
+    protected function parseProperty(ObjectInterface $object, $index, $value): ObjectInterface
     {
         if(empty($value)){
             return $object;
