@@ -50,4 +50,13 @@ class OpenAPIParserTest extends TestCase
 
         $this->assertInstanceOf(Schema\Response::class, $response400);
     }
+
+    public function testEbayBuyMarketing(){
+        $data = json_decode(file_get_contents(__DIR__ . '/Fixture/buy-marketing.json'), true);
+
+        $parser = new OpenAPIParser();
+
+        $result = $parser->parse($data);
+        $this->assertInstanceOf(Schema\OpenAPI::class, $result);
+    }
 }
