@@ -10,8 +10,8 @@ programming use.
 
 ### Installing
 
-```
-composer require-dev allansun/openapi-parser
+```bash
+composer require allansun/openapi-parser --dev
 ```
 
 
