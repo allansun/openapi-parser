@@ -13,8 +13,9 @@
     "php": "^7.4|^8.0",
     "ext-json": "*",
     "ext-fileinfo": "*",
-    "symfony/yaml": "^v5|^v6",
-    "symfony/property-info": "^v5|^v6"
+    "symfony/yaml": "^v5|^v6|^v7",
+    "symfony/property-info": "^v5|^v6|^v7",
+    "phpdocumentor/reflection-docblock": "^5.4"
   },
   "require-dev": {
     "phpunit/phpunit": "^9"
