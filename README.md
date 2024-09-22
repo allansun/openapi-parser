@@ -5,8 +5,8 @@
 [![License](https://poser.pugx.org/allansun/openapi-parser/license)](//packagist.org/packages/allansun/openapi-parser)
 [![codecov](https://codecov.io/gh/allansun/openapi-parser/branch/master/graph/badge.svg?token=OVYRXPSW2Y)](https://codecov.io/gh/allansun/openapi-parser)
 
-A universal OpenAPI (V3) or Swagger (V2) schema parser to convert OpenAPI/Swagger files into PHP object for 
-programming use.
+A universal OpenAPI (V3) and Swagger (V2) schema parser that converts OpenAPI/Swagger files into PHP objects for programming use.
+
 
 ### Installing
 
@@ -17,8 +17,7 @@ composer require-dev allansun/openapi-parser
 
 ## Usage
 
-This project is used for 'dev' environment only. It does not generate/provide any codes for run-time environment.
-
+This project is intended for development environments only. It does not generate or provide any code for runtime environments.
 To start
 
 ```php
@@ -81,4 +80,3 @@ project.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
