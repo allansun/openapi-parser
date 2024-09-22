@@ -57,4 +57,12 @@ class SwaggerParserTest extends TestCase
 
         $this->assertInstanceOf(Schema\Swagger::class, $result);
     }
+
+    public function testAmazon(){
+        $Parser = new SwaggerParser();
+
+        $result = $Parser->parse(Yaml::parseFile(__DIR__.'/Fixture/aplusContent_2020-11-01.json'));
+
+        $this->assertInstanceOf(Schema\Swagger::class, $result);
+    }
 }
