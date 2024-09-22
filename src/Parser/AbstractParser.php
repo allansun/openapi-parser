@@ -40,19 +40,20 @@ abstract class AbstractParser implements ParserInterface
     abstract public function parse(array $data): ObjectInterface;
 
     /**
-     * @param  ObjectInterface  $object
-     * @param  array            $data
+     * @param ObjectInterface $object
+     * @param array           $data
+     * @param bool            $isProperties
      *
      * @return ObjectInterface|Swagger|OpenAPI
      */
-    protected function parseObject(ObjectInterface $object, array $data): ObjectInterface
+    protected function parseObject(ObjectInterface $object, array $data, bool $isProperties = false): ObjectInterface
     {
         foreach ($data as $index => $value) {
             if ('$ref' == $index) {
                 $index = str_replace('$', '_', $index);
             }
 
-            if (property_exists($object, $index)) {
+            if (property_exists($object, $index) && !$isProperties) {
                 $object = $this->parseProperty($object, $index, $value);
             } elseif (true == ($fieldTypeClassName = $object->getPatternedFieldType($index))) {
                 $object = $this->parsePatternedField($object, $fieldTypeClassName, $index, $value);
@@ -63,7 +64,7 @@ abstract class AbstractParser implements ParserInterface
     }
 
     /**
-     * @param  ObjectInterface  $object
+     * @param ObjectInterface   $object
      * @param                   $index
      * @param                   $value
      *
@@ -71,11 +72,11 @@ abstract class AbstractParser implements ParserInterface
      */
     protected function parseProperty(ObjectInterface $object, $index, $value): ObjectInterface
     {
-        if(empty($value)){
+        if (empty($value)) {
             return $object;
         }
 
-
+        $isProperties  = $index == 'properties';
         $propertyTypes = $this->getPropertyTypes($object, $index);
 
         if ($propertyTypes) {
@@ -85,7 +86,7 @@ abstract class AbstractParser implements ParserInterface
                     if (true == ($PropertyType->getCollectionValueTypes() &&
                                  $className = $PropertyType->getCollectionValueTypes()[0]->getClassName())) {
                         foreach ($value as $key => $valueItem) {
-                            $objctValue = $this->parseObject(new $className(), $valueItem);
+                            $objctValue = $this->parseObject(new $className(), $valueItem, $isProperties);
                             if ($objctValue->isDataValid()) {
                                 $values[$key] = $objctValue;
                             }
@@ -93,7 +94,7 @@ abstract class AbstractParser implements ParserInterface
                     }
                 } elseif ($PropertyType->getClassName()) {
                     $className  = $PropertyType->getClassName();
-                    $objctValue = $this->parseObject(new $className(), $value);
+                    $objctValue = $this->parseObject(new $className(), $value, $isProperties);
                     if ($objctValue->isDataValid()) {
                         $values = $objctValue;
                         break;
